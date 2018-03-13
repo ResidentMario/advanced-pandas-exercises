@@ -14,21 +14,21 @@ def answer_q1():
 
 
 def check_q2(ans):
-    expected = reviews.groupby('variety').price.agg([min, max])
-    return ans.equals(expected)
-
-
-def answer_q2():
-    print("""reviews.groupby('variety').price.agg([min, max])""")
-
-
-def check_q3(ans):
     expected = reviews.groupby('price').points.max().sort_index()
     return ans.equals(expected)
 
 
-def answer_q3():
+def answer_q2():
     print("""reviews.groupby('price').points.max().sort_index()""")
+
+
+def check_q3(ans):
+    expected = reviews.groupby('variety').price.agg([min, max])
+    return ans.equals(expected)
+
+
+def answer_q3():
+    print("""reviews.groupby('variety').price.agg([min, max])""")
 
 
 def check_q4(ans):

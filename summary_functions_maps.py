@@ -41,53 +41,36 @@ reviews.price.map(lambda v: v - median_price)""")
 
 
 def check_q5(ans):
-    median_price = reviews.price.median()
-
-    def remean_price(srs):
-        return srs.price - median_price
-
-    expected = reviews.apply(remean_price, axis='columns')
-
-    return ans.head().equals(expected.head())
-
-
-def answer_q5():
-    print("""def remean_price(srs):
-    return srs.price - median_price
-
-reviews.apply(remean_price, axis='columns')""")
-
-
-def check_q6(ans):
     expected = reviews.loc[(reviews.points / reviews.price).argmax()].title
     return ans.equals(expected)
 
 
-def answer_q6():
+def answer_q5():
     print("""reviews.loc[(reviews.points / reviews.price).argmax()].title""")
 
 
-def check_q7(ans):
+def check_q6(ans):
     tropical_wine = reviews.description.map(lambda r: "tropical" in r).value_counts()
     fruity_wine = reviews.description.map(lambda r: "fruity" in r).value_counts()
     expected = pd.Series([tropical_wine[True], fruity_wine[True]], index=['tropical', 'fruity'])
     return ans.plot.bar() if ans.equals(expected) else False
 
 
-def answer_q7():
+def answer_q6():
     print("""tropical_wine = reviews.description.map(lambda r: "tropical" in r).value_counts()
 fruity_wine = reviews.description.map(lambda r: "fruity" in r).value_counts()
-counts = pd.Series([tropical_wine[True], fruity_wine[True]], index=['tropical', 'fruity'])""")
+pd.Series([tropical_wine[True], fruity_wine[True]], index=['tropical', 'fruity'])
+""")
 
 
-def check_q8(ans):
+def check_q7(ans):
     expected = reviews.loc[(reviews.country.notnull()) & (reviews.variety.notnull())]
     expected = expected.apply(lambda srs: srs.country + " - " + srs.variety, axis='columns')
     expected = expected.value_counts()
     return ans.head(10).plot.bar() if ans.head().equals(expected.head()) else False
 
 
-def answer_q8():
+def answer_q7():
     print("""ans = reviews.loc[(reviews.country.notnull()) & (reviews.variety.notnull())]
 ans = ans.apply(lambda srs: srs.country + " - " + srs.variety, axis='columns')
-ans = ans.value_counts()""")
+ans.value_counts()""")
