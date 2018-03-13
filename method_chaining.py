@@ -82,7 +82,7 @@ def check_q5(ans):
 
 
 def answer_q5():
-    print("""kepler.assign(n=0).groupby(['koi_pdisposition', 'koi_disposition']).n.count().plot.bar()""")
+    print("""kepler.assign(n=0).groupby(['koi_pdisposition', 'koi_disposition']).n.count()""")
 
 
 def check_q6(ans):

@@ -4,7 +4,7 @@ reviews = pd.read_csv("../input/wine-reviews/winemag-data-130k-v2.csv", index_co
 
 def check_q1(ans):
     expected = reviews.points.median()
-    return ans.equals(expected)
+    return ans == expected if type(ans) == float else False
 
 
 def answer_q1():
@@ -13,7 +13,7 @@ def answer_q1():
 
 def check_q2(ans):
     expected = reviews.country.unique()
-    return ans.equals(expected)
+    return set(ans) == set(expected)
 
 
 def answer_q2():
@@ -22,7 +22,7 @@ def answer_q2():
 
 def check_q3(ans):
     expected = reviews.country.value_counts()
-    return ans == expected
+    return ans.equals(expected)
 
 
 def answer_q3():
@@ -42,7 +42,7 @@ reviews.price.map(lambda v: v - median_price)""")
 
 def check_q5(ans):
     expected = reviews.loc[(reviews.points / reviews.price).argmax()].title
-    return ans.equals(expected)
+    return ans == expected
 
 
 def answer_q5():

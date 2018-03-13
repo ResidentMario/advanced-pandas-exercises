@@ -6,8 +6,8 @@ reviews = pd.read_csv("../input/wine-reviews/winemag-data-130k-v2.csv", index_co
 
 
 def check_q1(ans):
-    expected = reviews.points.dtype
-    return ans.equals(expected)
+    expected = str(reviews.points.dtype)
+    return str(ans) == expected if not isinstance(ans, pd.DataFrame) else False
 
 
 def answer_q1():
@@ -16,7 +16,7 @@ def answer_q1():
 
 def check_q2(ans):
     expected = reviews.price.astype(str)
-    return ans.equals(expected)
+    return ans == expected
 
 
 def answer_q2():
@@ -34,7 +34,7 @@ def answer_q3():
 
 def check_q4(ans):
     expected = reviews.region_1.fillna("Unknown").value_counts()
-    return sns.countplot(ans.head()) if ans.equals(expected) else False
+    return ans.head().plot.bar() if ans.equals(expected) else False
 
 
 def answer_q4():

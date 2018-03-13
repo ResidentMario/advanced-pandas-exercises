@@ -15,7 +15,7 @@ def answer_q1():
 
 def check_q2(ans):
     expected = reviews.description[0]
-    return ans.equals(expected)
+    return ans == expected
 
 
 def answer_q2():
@@ -109,7 +109,7 @@ def check_q12(ans):
 
 
 def answer_q12():
-    print("""sns.countplot(reviews.iloc[-1000:, 3])""")
+    print("""reviews.iloc[-1000:, 3]""")
 
 
 def check_q13(ans):
