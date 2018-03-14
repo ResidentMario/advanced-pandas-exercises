@@ -39,7 +39,7 @@ def check_q3(ans):
          .apply(len)
          .reset_index()
 )
-    return ans == expected
+    return ans.equals(expected)
 
 
 def answer_q3():
