@@ -57,7 +57,50 @@ def answer_q5():
     print("""pd.read_excel("../input/publicassistance/xls_files_all/WICAgencies2014ytd.xls", 
 sheetname='Pregnant Women Participating')""")
 
+''' I am commenting on this to point out the error.
+I am getting an error in Question 5 of Lesson 1 Creating,Reading and Writing :
 
+FileNotFoundError: [Errno 2] No such file or directory: '../input/publicassistance/xls_files_all/WICAgencies2014ytd.xls'
+
+I wrote this answer code :
+pd.read_excel("../input/publicassistance/xls_files_all/WICAgencies2014ytd.xls",
+sheetname='Pregnant Women Participating')
+
+It seems this particular dataset is missing.
+
+Kaggle should change the user-defined function of Question 5 of Lesson 1. It must include the excel file US Public Assistance WIC PWP data in the function. CSV File can be found at :
+https://www.kaggle.com/jpmiller/publicassistance/WICAgencies2014ytd/Pregnant_Women_Participating.csv
+
+creating_reading_writing.py program of Pandas Lesson 1. The user-defined functions def check_q5(ans) and def answer_q5() must be changed. Unless we can't complete the course and figure out the solution.
+
+def check_q5(ans):
+expected = pd.read_excel("../input/publicassistance/xls_files_all/WICAgencies2014ytd.xls",
+sheetname='Pregnant Women Participating')
+return ans.head().equals(expected.head())
+
+def answer_q5():
+print("""pd.read_excel("../input/publicassistance/xls_files_all/WICAgencies2014ytd.xls",
+sheetname='Pregnant Women Participating')""")
+
+This file (../input/publicassistance/xls_files_all/WICAgencies2014ytd.xls) is not present in the directory. I think Kaggle must have updated the dataset of US Public Assistance WIC.
+
+Program Path : /opt/conda/lib/python3.6/site-packages/learntools/advanced_pandas/creating_reading_writing.py
+'''
+''' If Kaggle removed xls files then it can make changes i following locations(I guess) :
+
+/opt/conda/lib/python3.6/site-packages/learntools/advanced_pandas/creating_reading_writing.py
+
+and
+
+/kaggle/input/advanced-pandas-exercises/creating_reading_writing.py
+
+creating_reading_writing.py (on both locations) can be replaced with what I made if Kaggle consider .csv file location for question 5. The markdown of question 5 must also be changed.
+
+My file : https://github.com/deetrojan/Python-Data_Science/blob/main/creating_reading_writing.py
+
+'''
+    
+    
 def check_q6(ans=""):
     import os
     expected = pd.DataFrame({'Cows': [12, 20], 'Goats': [22, 19]}, index=['Year 1', 'Year 2'])
@@ -77,5 +120,5 @@ def check_q7(ans):
 
 def answer_q7():
     print("""import sqlite3
-conn = sqlite3.connect("../input/pitchfork-data/database.sqlite")
-pd.read_sql_query("SELECT * FROM artists", conn)""")
+    conn = sqlite3.connect("../input/pitchfork-data/database.sqlite")
+    pd.read_sql_query("SELECT * FROM artists", conn)""")
