@@ -120,5 +120,5 @@ def check_q7(ans):
 
 def answer_q7():
     print("""import sqlite3
-conn = sqlite3.connect("../input/pitchfork-data/database.sqlite")
-pd.read_sql_query("SELECT * FROM artists", conn)""")
+    conn = sqlite3.connect("../input/pitchfork-data/database.sqlite")
+    pd.read_sql_query("SELECT * FROM artists", conn)""")
